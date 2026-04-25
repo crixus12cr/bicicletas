@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('servicio_addons', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('servicio_id')->constrained('servicios')->onDelete('cascade');
+            $table->string('descripcion');
+            $table->decimal('costo', 8, 2);
             $table->timestamps();
         });
     }

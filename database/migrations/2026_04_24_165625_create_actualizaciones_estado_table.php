@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('actualizaciones_estado', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('servicio_id')->constrained('servicios')->onDelete('cascade');
+            $table->string('estado_anterior', 30)->nullable();
+            $table->string('estado_nuevo', 30);
+            $table->text('mensaje_enviado')->nullable();
             $table->timestamps();
         });
     }
