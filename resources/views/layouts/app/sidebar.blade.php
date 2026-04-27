@@ -49,21 +49,13 @@
                 @endif
             </flux:sidebar.group>
 
-            <!-- ========== MECÁNICOS (solo admin) ========== -->
+            <!-- ========== USUARIOS Y ROLES (solo admin) ========== -->
             @if(auth()->user()->hasRole('admin'))
-                <flux:sidebar.group heading="Mecánicos" expandable icon="users"
-                    :expanded="request()->routeIs('mecanicos*')">
-                    <flux:sidebar.item icon="user-plus" href="#"
-                        :current="request()->routeIs('mecanicos.registrar')" wire:navigate>
-                        {{ __('Registrar Mecánico') }}
-                    </flux:sidebar.item>
-                    <flux:sidebar.item icon="users" href="#"
-                        :current="request()->routeIs('mecanicos.lista')" wire:navigate>
-                        {{ __('Lista de Mecánicos') }}
-                    </flux:sidebar.item>
-                    <flux:sidebar.item icon="chart-bar" href="#"
-                        :current="request()->routeIs('mecanicos.desempeno')" wire:navigate>
-                        {{ __('Desempeño') }}
+                <flux:sidebar.group heading="Usuarios y Roles" expandable icon="users"
+                    :expanded="request()->routeIs('admin.usuarios*')">
+                    <flux:sidebar.item icon="user-group" href="{{ route('admin.usuarios.gestion') }}"
+                        :current="request()->routeIs('admin.usuarios.gestion')" wire:navigate>
+                        {{ __('Gestión de Usuarios') }}
                     </flux:sidebar.item>
                 </flux:sidebar.group>
             @endif
@@ -85,7 +77,7 @@
                 @if(auth()->user()->hasRole('admin'))
                     <flux:sidebar.item icon="users" href="#"
                         :current="request()->routeIs('reportes.por-mecanico')" wire:navigate>
-                        {{ __('Por Mecánico') }}
+                        {{ __('Desempeño por Mecánico') }}
                     </flux:sidebar.item>
                     <flux:sidebar.item icon="arrow-down-tray" href="#"
                         :current="request()->routeIs('reportes.exportar')" wire:navigate>
