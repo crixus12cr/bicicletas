@@ -28,8 +28,8 @@
                 
                 <!-- Todos los servicios (solo administrador) -->
                 @if(auth()->user()->hasRole('admin'))
-                    <flux:sidebar.item icon="clipboard-document-list" href="#"
-                        :current="request()->routeIs('servicios.todos')" wire:navigate>
+                    <flux:sidebar.item icon="clipboard-document-list" href="{{ route('admin.servicios.todos') }}"
+                        :current="request()->routeIs('admin.servicios.todos')" wire:navigate>
                         {{ __('Todos los Servicios') }}
                     </flux:sidebar.item>
                 @endif
